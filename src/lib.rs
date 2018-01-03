@@ -1,3 +1,5 @@
+extern crate user_input;
+
 #[cfg(test)]
 mod tests {
     #[test]
