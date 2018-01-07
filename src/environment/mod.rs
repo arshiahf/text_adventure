@@ -22,7 +22,8 @@ pub fn create_rooms(root_dir:String)
         println!("There is now a folder entitled {}, please fill in the returns for all locally accepted commands.", room_name);
         let mut builder = DirBuilder::new();
         let path:String = root_dir.clone() + &room_name;
-        builder.recursive(true).create(path.as_str()).unwrap();
+        let path_str = path.as_str();
+        builder.recursive(true).create(path_str).unwrap();
 
         let mut continuevec:Vec<char> = Vec::new();
         request_input_to_vec("Would you like to make more rooms y/n? ", &mut continuevec);
