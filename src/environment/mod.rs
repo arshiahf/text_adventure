@@ -17,11 +17,12 @@ pub fn create_rooms(root_dir:&mut String)
     {
         let mut room_name:String = String::new();
         request_input_string("Please type in the name of a room with no spaces: ", &mut room_name);
+        room_name.truncate(room_name.len()-1);
         let mut accepted_commands: Vec<String> = Vec::new();
         request_input_to_vec("Please type all accepted commands for this room, separated by spaces: ", &mut accepted_commands);
         println!("There is now a folder entitled {}, please fill in the returns for all locally accepted commands.", room_name);
         let mut builder = DirBuilder::new();
-        let mut path = root_dir.clone() + &mut room_name;
+        let mut path = root_dir.clone().truncate(root_dir.len()-1) + &mut room_name;
         match builder.recursive(true).create(path.as_mut_str())
         {
             Ok(_) => {}
