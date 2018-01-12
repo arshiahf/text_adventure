@@ -18,11 +18,13 @@ pub fn create_rooms(root_dir:&mut String)
         let mut room_name:String = String::new();
         request_input_string("Please type in the name of a room with no spaces: ", &mut room_name);
         room_name.pop();
+        room_name.pop();
         room_name.push('\0');
         let mut accepted_commands: Vec<String> = Vec::new();
         request_input_to_vec("Please type all accepted commands for this room, separated by spaces: ", &mut accepted_commands);
         println!("There is now a folder entitled {}, please fill in the returns for all locally accepted commands.", room_name);
         let mut builder = DirBuilder::new();
+        root_dir.pop();
         root_dir.pop();
         root_dir.push('\0');
         let path = root_dir.clone() + &room_name;
