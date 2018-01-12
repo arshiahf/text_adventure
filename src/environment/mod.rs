@@ -16,7 +16,7 @@ pub fn create_rooms(root_dir:&mut String)
     while more_rooms
     {
         let mut room_name:String = String::new();
-        request_input_string("Please type in the name of a room with no spaces: ", &mut room_name);
+        request_input_string("Please type in the name of a room: ", &mut room_name);
         room_name.pop();
         room_name.pop();
         //room_name.push('\0');
