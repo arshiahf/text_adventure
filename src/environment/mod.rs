@@ -26,7 +26,7 @@ pub fn create_rooms(root_dir:&mut String)
         {
             Ok(_) => {}
             Err(err) => {
-                eprintln!("{:?}", err);
+                eprintln!("{} {:?}", path, err);
                 exit(1);
             }
         }
