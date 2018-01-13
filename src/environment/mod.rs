@@ -43,7 +43,8 @@ fn initialize_room(root_dir:String)
 
     let mut accepted_commands:Vec<String> = Vec::new();
     request_input_to_vec("Please type all accepted commands for this room, separated by spaces: ", &mut accepted_commands);
-    new_files(root_dir.clone(), room_name.clone(), accepted_commands);
+    let path = root_dir.clone() + &room_name.clone() + "/";
+    new_files(path, accepted_commands);
 
     println!("There is now a folder entitled {}, please fill in the returns for all locally accepted commands.", room_name);
 }
