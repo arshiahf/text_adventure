@@ -18,7 +18,7 @@ struct Room
 pub fn create_rooms()
 {
     let mut root_dir:String = String::new();
-    request_input_string("Please input root directory with no spaces: ", &mut root_dir);
+    request_input_string("Please input root directory with no spaces or slashes: ", &mut root_dir);
 
     let mut more_rooms: bool = true;
     while more_rooms
@@ -33,19 +33,21 @@ pub fn create_rooms()
             _ => more_rooms = false,
         }
     }
+    for
 }
 
 fn initialize_room(root_dir:String)
 {
     let mut room_name:String = String::new();
+    let rooms_dir = root_dir.clone() + "/rooms/";
     request_input_string("Please type in the name of a room: ", &mut room_name);
-    new_directory(root_dir.clone(), room_name.clone());
+    new_directory(rooms_dir.clone(), room_name.clone());
 
     let mut accepted_commands:Vec<String> = Vec::new();
     request_input_to_vec("Please type all accepted commands for this room, separated by spaces: ", &mut accepted_commands);
+    let commands_dir = root_dir.clone() + "/commands/";
+    new_files(commands_dir, accepted_commands);
     accepted_commands.push("description");
-    let path = root_dir.clone() + &room_name.clone() + "/";
-    new_files(path, accepted_commands);
 
     println!("There is now a folder entitled {}, please fill in the returns for all locally accepted commands.", room_name);
 }
