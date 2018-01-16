@@ -13,6 +13,7 @@ struct Room
 {
     id: String,
     accepted_commands: Vec<String>,
+    dir_path: String,
 }
 
 pub fn create_rooms()
