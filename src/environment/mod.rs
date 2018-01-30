@@ -14,6 +14,7 @@ struct Room
 {
     id: String,
     accepted_commands: Vec<String>,
+    dir_path: String,
 }
 
 // Used to initially create all rooms and skeleton commands for a text adventure
