@@ -14,7 +14,6 @@ struct Room
 {
     id: String,
     accepted_commands: Vec<String>,
-    dir_path: String,
 }
 
 // Used to initially create all rooms and skeleton commands for a text adventure
@@ -73,41 +72,11 @@ fn create_commands(root_dir:String, room:Room, commands:&mut Vec<String>)
 
         // Skeleton JSON document to describe returns for command
         let command_return_skeleton:String = String::from(
-            "Test"
+            "{
+                \"base_return\":\"\"
+            }"
         );
-        if !commands.contains(&command.clone())
-        {
-            // Skeleton function for new command files
-            let mut command_function_skeleton:String = String::from("fn ");
-            command_function_skeleton = command_function_skeleton + &command.clone();
-            
 
-            commands.push(command);
-            let commands_dir:String = String::from(root_dir.clone() + "/commands/");
-            match File::create(commands_dir.as_str())
-            {
-                Ok(mut buf) => {
-                    match buf.write(command_function_skeleton.clone().as_bytes())
-                    {
-                        Ok(_) =>match buf.flush(){
-                                Ok(_) => {}
-                                Err(err) => {
-                                    eprintln!("{:?}", err);
-                                    exit(1);
-                                }
-                            }
-                        Err(err) => {
-                            eprintln!("{:?}", err);
-                            exit(1);
-                        }
-                    }
-                }
-                Err(err) => {
-                    eprintln!("{:?}", err);
-                    exit(1);
-                }
-            }
-        }
         let command_dir:String = String::from(root_dir.clone() + "/rooms/" + room.id.as_str().clone());
         match File::create(command_dir.as_str())
         {
